@@ -345,3 +345,56 @@
       height: auto;
       flex-shrink: 0;
     }
+
+    /* o fundo escuro que cobre toda a tela */
+.modal {
+  display: none;               /* invisível por padrão */
+  position: fixed;
+  z-index: 1000;               /* acima de tudo */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;              /* scroll se necessário */
+  background-color: rgba(0,0,0,.6);
+}
+
+/* caixa branca centralizada */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 50px;
+  border-radius: 4px;
+  width: 90%;
+  max-width: 400px; /* limit reasonable width */
+  box-shadow: 0 2px 10px rgba(0,0,0,.3);
+}
+
+/* center any form vertically and horizontally within its container */
+.modal-content form,
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* make form inputs full width but not too wide */
+.modal-content form input,
+.modal-content form textarea {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 15px;
+}
+
+/* botão fechar “×” */
+.close {
+  float: right;
+  font-size: 1.7rem;
+  cursor: pointer;
+}
+
+/* centralizar botão dentro do formulário do modal */
+.modal-content form button.btn_2 {
+  display: block;
+  margin: 20px auto 0;
+}

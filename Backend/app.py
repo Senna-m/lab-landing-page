@@ -29,6 +29,17 @@ CREATE TABLE IF NOT EXISTS contatos (
 )
 """
 
+CREATE_ATENDIMENTO_TABLE_SQL = """
+CREATE TABLE IF NOT EXISTS formulario_atendimento (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) NOT NULL,
+    mensagem TEXT NOT NULL,
+    data_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+"""
+
 # Função auxiliar — verifica se o header X-API-Key veio correto
 def verificar_api_key():
     chave_esperada = os.getenv('ADMIN_API_KEY')
@@ -44,6 +55,18 @@ def criar_tabela():
         mysql.connection.commit()
         cursor.close()
         return jsonify({"mensagem": "Tabela criada com sucesso"}), 200
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
+
+
+@app.route('/api/criar-tabela-atendimento', methods=['GET'])
+def criar_tabela_atendimento():
+    try:
+        cursor = mysql.connection.cursor()
+        cursor.execute(CREATE_ATENDIMENTO_TABLE_SQL)
+        mysql.connection.commit()
+        cursor.close()
+        return jsonify({"mensagem": "Tabela atendimento criada com sucesso"}), 200
     except Exception as e:
         return jsonify({"erro": str(e)}), 500
 
@@ -91,6 +114,46 @@ def listar_contatos():
 @app.route('/health', methods=['GET'])
 def health():
     return jsonify({"status": "ok"}), 200
+
+
+
+@app.route('/api/atendimento', methods=['POST'])
+def enviar_atendimento():
+    try:
+        dados = request.get_json()
+
+        if not all([dados.get('nome'), dados.get('email'), dados.get('tipo'), dados.get('mensagem')]):
+            return jsonify({"erro": "Todos os campos são obrigatórios"}), 400
+
+        cursor = mysql.connection.cursor()
+        cursor.execute(
+            "INSERT INTO formulario_atendimento (nome, email, tipo, mensagem) VALUES (%s, %s, %s, %s)",
+            (dados['nome'], dados['email'], dados['tipo'], dados['mensagem'])
+        )
+        mysql.connection.commit()
+        cursor.close()
+
+        return jsonify({"mensagem": "Atendimento enviado com sucesso"}), 201
+
+    except MySQLdb.Error as e:
+        return jsonify({"erro": f"Erro no banco de dados: {str(e)}"}), 500
+    except Exception as e:
+        return jsonify({"erro": f"Erro: {str(e)}"}), 500
+
+
+@app.route('/api/atendimentos', methods=['GET'])
+def listar_atendimentos():
+    if not verificar_api_key():
+        return jsonify({"erro": "Acesso não autorizado"}), 401
+
+    try:
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute("SELECT * FROM formulario_atendimento ORDER BY data_envio DESC")
+        atendimentos = cursor.fetchall()
+        cursor.close()
+        return jsonify(atendimentos), 200
+    except Exception as e:
+        return jsonify({"erro": str(e)}), 500
 
 
 if __name__ == '__main__':

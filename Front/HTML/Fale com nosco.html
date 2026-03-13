@@ -15,30 +15,16 @@
         <a href="index.html">Home</a>
         <a href="serviços.html">Serviços</a>
         <a href="laboratorio.html">Laboratório</a>
-         <a href="Fale com nosco.html">Fale Conosco</a>
+         <a href="#contato">Fale Conosco</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1>Seu laboratório de confiança</h1>
-          <p>
-            Atendimento com qualidade, praticidade e segurança para exames laboratoriais.
-          </p>
-          <a class="btn" href="#">Resultados de Exames</a>
+   <section class="hero" id="FaleConosco">
+      <div class="container">
+        <h1 class="section-title_">Fale Conosco</h1>
         </div>
-
-        <div class="hero-card">
-          <h3>Informações rápidas</h3>
-          <p><strong>Funcionamento:</strong> Seg à Sex - 7:00h às 19:00h</p>
-          <p><strong>Sábado:</strong> 8:00h às 14:00h</p>
-          <p><strong>Atendimento:</strong> Seg à Sex - 8:00h às 17:00h</p>
-          <p><strong>Central:</strong> (71) 3508-4977</p>
-        </div>
-      </div>
     </section>
 
     <section id="servicos">
@@ -46,19 +32,21 @@
         <h2 class="section-title">Informações</h2>
         <div class="cards">
           <div class="card">
-            <h3>Resultados de Exames</h3>
+            <h3>Contatos</h3>
             <p>
-              Área de acesso restrito para clientes consultarem seus resultados. 
+              Entre em contato conosco através dos canais disponíveis.
             </p><br>
-            <a class="btn_2" href="https://outrosite.example.com" target="_blank" rel="noopener noreferrer">Resultados</a>
+            <p>Telefone: (71) 3508-4977</p>
+            <p>Email: contato@labvilas.com</p>
+
           </div>
 
           <div class="card">
-            <h3>Localização</h3>
+            <h3>Trabalhe conosco</h3>
             <p>
-              Encontre facilmente a unidade e venha conhecer nossa estrutura.
-            </p>
-             <a class="btn_2" href="https://maps.google.com/?q=LabVilas" target="_blank" rel="noopener noreferrer">Ver no Mapa</a>
+              Estamos sempre em busca de talentos para fazer parte da nossa equipe.<br>
+             Envie seu currículo para: </p>
+             <a class="btn_2" href="mailto:nathaliesenna.m@gmail.com" target="_blank" rel="noopener noreferrer">Enviar Currículo</a>
           </div>
 
           <div class="card">
@@ -76,7 +64,7 @@
     </main>
 
     <!-- modal structure moved here so it's a sibling of main, not nested in a card -->
-    <div id="modal" class="modal">
+    <div id="modal" class="modal_support">
       <div class="modal-content">
         <span id="closeModal" class="close">&times;</span>
         <h3>Fale Conosco</h3>
@@ -86,6 +74,14 @@
 
           <label for="email">E‑mail:</label>
           <input type="email" id="email" name="email" required><br>
+
+          <label for="tipo">Tipo:</label>
+          <select id="tipo" name="tipo" required>
+            <option value="">Selecione...</option>
+            <option value="duvida">Dúvida</option>
+            <option value="sugestao">Sugestão</option>
+            <option value="reclamacao">Reclamação</option>
+          </select><br>
 
           <label for="mensagem" class="mensagem">Mensagem:</label>
           <textarea id="mensagem" name="mensagem" rows="4" required></textarea><br>
@@ -124,6 +120,6 @@
   </footer>
 
   <!-- include javascript file with modal logic -->
-  <script src="../script.js"></script>
+  <script src="../script-support.js"></script>
 </body>
 </html>

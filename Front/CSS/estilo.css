@@ -417,3 +417,79 @@ form {
   display: block;
   margin: 20px auto 0;
 }
+
+.label {
+  align-self: flex-start;
+  margin-bottom: 5px;
+}
+
+/* ── Modal visual geral ── */
+.modal-content {
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 460px;
+}
+
+.modal-content h3 {
+  color: #0077b6;
+  font-size: 22px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.modal-content form {
+  align-items: stretch;
+}
+
+/* Labels */
+.modal-content label {
+  display: block;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #5b6b7a;
+  margin-bottom: 6px;
+  margin-top: 16px;
+}
+
+/* Campos de texto, email e select */
+.modal-content input,
+.modal-content select,
+.modal-content textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #d0dce8;
+  border-radius: 8px;
+  font-size: 15px;
+  color: #1f2d3d;
+  background: #f4f8fb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  margin-bottom: 0;
+}
+
+/* Efeito de foco nos campos */
+.modal-content input:focus,
+.modal-content select:focus,
+.modal-content textarea:focus {
+  border-color: #0096c7;
+  box-shadow: 0 0 0 3px rgba(0, 150, 199, 0.15);
+  background: #ffffff;
+}
+
+.modal-content textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Botão Enviar */
+.modal-content form button.btn_2 {
+  margin-top: 24px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}

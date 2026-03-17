@@ -6,12 +6,12 @@
     }
 
     body {
-      background-color: #f4f8fb;
+      background-color: #FDFEFE;
       color: #1f2d3d;
     }
 
     header {
-      background: #ffffff;
+      background: #FDFEFE;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
       position: sticky;
       top: 0;

@@ -2,6 +2,8 @@
 
 Site institucional para laboratório clínico com backend em Flask, banco de dados MySQL e painel administrativo protegido.
 
+<img width="1372" height="913" alt="image" src="https://github.com/user-attachments/assets/98005139-689e-40f5-a7fd-94f9f9c8de0b" />
+
 ---
 
 ## 🎯 Sobre o projeto
